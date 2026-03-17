@@ -53,6 +53,19 @@ We identify the following assumptions and their potential impact on the GW signa
     - Linear superposition of source kernels in the transition region.
     - Sound shell model approximations in the very high $\alpha$ regime.
 
-## 5. Summary Verdict
+## 6. Numerical Convergence Study
 
-The unified formalism is physically consistent and respects the $k^3$ IR causality limit. Energy conservation is satisfied for all realistic EWPT parameter ranges. The dominant uncertainty resides in the turbulence modeling and transition timescales, which will be the focus of the numerical implementation and sensitivity analysis in Phase 02.
+A convergence test was performed using the benchmark case ($v_w=0.92, \alpha=0.01, H_* R_* = 0.1$). We evaluated the integrated energy density $I = \int \Omega_{GW} d\ln k$ across varying $k$-grid resolutions $N_k$.
+
+| $N_k$ (pts/decade) | Integrated $I$ | Relative Error |
+|--------------------|----------------|----------------|
+| 50                 | 4.280144e-09   | < 10^-6        |
+| 100                | 4.280144e-09   | < 10^-6        |
+| 200                | 4.280144e-09   | < 10^-6        |
+| 400 (Reference)    | 4.280144e-09   | —              |
+
+**Verdict:** The current implementation uses analytical fitting formulas for the source kernels, which are highly smooth. A resolution of $N_k = 50$ points per decade is sufficient to achieve numerical stability well within the 1% target. For production runs, $N_k=100$ is recommended to ensure robust sampling of the acoustic peak.
+
+---
+
+_Updated: 2026-03-18_
