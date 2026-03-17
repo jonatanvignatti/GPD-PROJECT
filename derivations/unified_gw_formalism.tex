@@ -1,0 +1,61 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+
+\begin{document}
+
+% ASSERT_CONVENTION: natural_units=natural, metric_signature=mostly-minus, fourier_convention=physics, coupling_convention=alpha_s, renormalization_scheme=MSbar, gauge_choice=Feynman
+% Note: Using metric signature (-+++) and natural units.
+
+\section{Unified Stress-Energy Tensor for Gravitational Wave Sources}
+
+We consider the cosmological first-order phase transition in the early universe, where gravitational waves (GWs) are produced through three primary mechanisms: bubble collisions, sound waves in the plasma, and turbulence. We adopt the convention of an expanding FLRW background with metric signature $(-+++)$.
+
+\subsection{Combined Stress-Energy Tensor}
+
+Assuming the mechanisms occur in distinct regimes or their cross-terms are negligible (linear superposition), the total stress-energy tensor $T_{\mu\nu}$ is given by:
+\begin{equation}
+    T_{\mu\nu} = T_{\mu\nu}^{\text{bub}} + T_{\mu\nu}^{\text{sw}} + T_{\mu\nu}^{\text{turb}}
+\end{equation}
+
+\subsubsection{Scalar Field (Bubbles)}
+In the envelope approximation, the scalar field $\phi$ contributes to the stress-energy tensor primarily at the bubble walls. The components of the energy-momentum tensor are:
+\begin{equation}
+    T_{\mu\nu}^{\text{bub}} = \partial_\mu \phi \partial_\nu \phi - g_{\mu\nu} \left( \frac{1}{2} (\partial \phi)^2 + V(\phi) \right)
+\end{equation}
+The dominant source for GWs is the anisotropic stress $\Pi_{ij}^{\text{bub}}$, which in the TT gauge is determined by the gradients:
+\begin{equation}
+    \Pi_{ij}^{\text{bub}} \sim \partial_i \phi \partial_j \phi
+\end{equation}
+
+\subsubsection{Sound Waves (Acoustic Phase)}
+Sound waves are bulk fluid motions in the plasma characterized by the enthalpy density $w = \rho + p$ and the velocity field $v^i$. The stress-energy tensor is:
+\begin{equation}
+    T_{\mu\nu}^{\text{sw}} = w U_\mu U_\nu + p g_{\mu\nu}
+\end{equation}
+where $U_\mu = (1, \mathbf{v})$ is the four-velocity of the fluid. In the non-relativistic limit for the bulk motions, the anisotropic stress is:
+\begin{equation}
+    \Pi_{ij}^{\text{sw}} = w v_i v_j
+\end{equation}
+
+\subsubsection{Turbulence}
+Magnetohydrodynamic (MHD) turbulence at the end of the sound-wave phase contributes:
+\begin{equation}
+    T_{ij}^{\text{turb}} \approx w v_i^{\text{turb}} v_j^{\text{turb}}
+\end{equation}
+
+\subsection{Gravitational Wave Evolution Equation}
+
+In an expanding FLRW background, the metric is given by $ds^2 = a^2(\eta) [-d\eta^2 + (\delta_{ij} + h_{ij}) dx^i dx^j]$. The linearized Einstein equation in the transverse-traceless (TT) gauge ($h_{0\mu} = 0, \partial^i h_{ij} = 0, h^i_i = 0$) is:
+\begin{equation}
+    h''_{ij} + 2\mathcal{H} h'_{ij} - \nabla^2 h_{ij} = 16\pi G a^2 \Pi_{ij}^{\text{TT}}
+\end{equation}
+where $\mathcal{H} = a'/a$ is the conformal Hubble rate, and $\Pi_{ij}^{\text{TT}}$ is the transverse-traceless projection of the combined anisotropic stress $\Pi_{ij} = T_{ij} - p g_{ij}$.
+
+Under the assumption of linear superposition, the total source power spectrum is the sum of individual spectra:
+\begin{equation}
+    \langle \Pi_{ij}^{\text{TT}} \Pi_{ij}^{\text{TT}} \rangle = \langle \Pi_{ij, \text{bub}}^{\text{TT}} \Pi_{ij, \text{bub}}^{\text{TT}} \rangle + \langle \Pi_{ij, \text{sw}}^{\text{TT}} \Pi_{ij, \text{sw}}^{\text{TT}} \rangle + \langle \Pi_{ij, \text{turb}}^{\text{TT}} \Pi_{ij, \text{turb}}^{\text{TT}} \rangle
+\end{equation}
+
+\end{document}
