@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "scope": {
+    "question": "How do different modeling assumptions for electroweak first-order phase transitions move the GW signal in the (f, ω_GW) plane?",
+    "in_scope": [
+      "Consistent combination of bubble collisions, sound waves, and turbulence in GW spectra",
+      "Propagation to present-day observables (LISA/PTA/post-merger detectors)",
+      "Testing of wall velocity and sound shell model assumptions",
+      "Comparison with prior benchmarks (e.g., Hindmarsh et al. 2015)"
+    ],
+    "out_of_scope": [
+      "Experimental detection (LISA, PTA)",
+      "Non-electroweak phase transitions",
+      "Gravitational wave background from other sources"
+    ],
+    "unresolved_questions": [
+      "Which specific sound shell model to prioritize?",
+      "Which turbulence decay rates to consider?"
+    ]
+  },
+  "context_intake": {
+    "must_read_refs": ["Ref-Hindmarsh2015"],
+    "must_include_prior_outputs": [],
+    "user_asserted_anchors": ["Hindmarsh et al. (2015)", "Other benchmarks since 1994"],
+    "known_good_baselines": ["Hindmarsh et al. (2015)"],
+    "context_gaps": [],
+    "crucial_inputs": ["Wall velocity and sound shell model test cases"]
+  },
+  "approach_policy": {
+    "formulations": ["GW spectra from electroweak first-order phase transitions"],
+    "allowed_estimator_families": ["analytical", "numerical"],
+    "forbidden_estimator_families": [],
+    "allowed_fit_families": [],
+    "forbidden_fit_families": [],
+    "stop_and_rethink_conditions": ["Inconsistent results compared to benchmark (Hindmarsh 2015)"]
+  },
+  "observables": [
+    {
+      "id": "obs-gw-spectra",
+      "name": "GW Spectra (f, ω_GW)",
+      "kind": "curve",
+      "definition": "Gravitational wave energy density spectra as a function of frequency"
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim-gw-consistency",
+      "statement": "Consistent combination of bubble collisions, sound waves, and turbulence in GW spectra moves the signal in the (f, ω_GW) plane.",
+      "observables": ["obs-gw-spectra"],
+      "deliverables": ["deliv-gw-code", "deliv-gw-spectra-plots", "deliv-gw-formula"],
+      "acceptance_tests": ["test-gw-benchmark-comparison"],
+      "references": ["Ref-Hindmarsh2015"]
+    }
+  ],
+  "deliverables": [
+    {
+      "id": "deliv-gw-code",
+      "kind": "code",
+      "description": "Code for generating improved GW spectra for electroweak phase transitions",
+      "must_contain": ["bubble collision, sound wave, and turbulence combinations"]
+    },
+    {
+      "id": "deliv-gw-spectra-plots",
+      "kind": "figure",
+      "path": "results/gw-spectra-comparison.pdf",
+      "description": "Plots comparing the GW spectra under different modeling assumptions",
+      "must_contain": ["comparison with benchmarks (Hindmarsh 2015)"]
+    },
+    {
+      "id": "deliv-gw-formula",
+      "kind": "derivation",
+      "description": "New analytical formula for the improved GW spectrum",
+      "must_contain": ["derivation steps and comparison with existing benchmarks"]
+    }
+  ],
+  "acceptance_tests": [
+    {
+      "id": "test-gw-benchmark-comparison",
+      "subject": "claim-gw-consistency",
+      "kind": "benchmark",
+      "procedure": "Compare the generated GW spectra against Hindmarsh et al. (2015) and existing benchmarks",
+      "pass_condition": "Reasonable agreement with benchmarks in appropriate limits",
+      "evidence_required": ["deliv-gw-spectra-plots", "Ref-Hindmarsh2015"],
+      "automation": "hybrid"
+    }
+  ],
+  "references": [
+    {
+      "id": "Ref-Hindmarsh2015",
+      "kind": "paper",
+      "locator": "Hindmarsh et al., Phys. Rev. D 92, 123009 (2015)",
+      "aliases": ["Hindmarsh 2015"],
+      "role": "benchmark",
+      "why_it_matters": "Primary benchmark for cosmological first-order phase transitions",
+      "applies_to": ["claim-gw-consistency"],
+      "carry_forward_to": ["planning", "execution", "verification", "writing"],
+      "must_surface": true,
+      "required_actions": ["read", "compare", "cite"]
+    }
+  ],
+  "forbidden_proxies": [
+    {
+      "id": "fp-gw-proxy",
+      "subject": "claim-gw-consistency",
+      "proxy": "Qualitative agreement without rigorous benchmark comparison",
+      "reason": "Modeling assumptions must be quantitatively tested against ground truth"
+    }
+  ],
+  "links": [
+    {
+      "id": "link-gw-consistency",
+      "source": "claim-gw-consistency",
+      "target": "deliv-gw-spectra-plots",
+      "relation": "visualizes",
+      "verified_by": ["test-gw-benchmark-comparison"]
+    }
+  ],
+  "uncertainty_markers": {
+    "weakest_anchors": ["Turbulence decay rates"],
+    "unvalidated_assumptions": ["Wall velocity modeling", "Sound shell approximations"],
+    "competing_explanations": [],
+    "disconfirming_observations": ["Signal moving unexpectedly outside (f, ω_GW) plane benchmarks"]
+  }
+}
