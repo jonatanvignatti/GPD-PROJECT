@@ -58,4 +58,57 @@ Under the assumption of linear superposition, the total source power spectrum is
     \langle \Pi_{ij}^{\text{TT}} \Pi_{ij}^{\text{TT}} \rangle = \langle \Pi_{ij, \text{bub}}^{\text{TT}} \Pi_{ij, \text{bub}}^{\text{TT}} \rangle + \langle \Pi_{ij, \text{sw}}^{\text{TT}} \Pi_{ij, \text{sw}}^{\text{TT}} \rangle + \langle \Pi_{ij, \text{turb}}^{\text{TT}} \Pi_{ij, \text{turb}}^{\text{TT}} \rangle
 \end{equation}
 
+\subsection{Gravitational Wave Spectral Density}
+
+The energy density of the GWs is given by $\rho_{\text{GW}} = \frac{\langle \dot{h}_{ij} \dot{h}_{ij} \rangle}{32\pi G}$. The normalized spectral density is defined as:
+\begin{equation}
+    \Omega_{\text{GW}}(k) = \frac{1}{\rho_c} \frac{d \rho_{\text{GW}}}{d \ln k}
+\end{equation}
+where $\rho_c$ is the critical energy density of the universe. Assuming linear superposition of the three sources, the total spectrum is the sum:
+\begin{equation}
+    \Omega_{\text{GW}}(k) = \Omega_{\text{bub}}(k) + \Omega_{\text{sw}}(k) + \Omega_{\text{turb}}(k)
+\end{equation}
+
+\subsubsection{Bubble Collision Contribution (Envelope Approximation)}
+The bubble collision spectrum, dominant in vacuum transitions, is characterized by the peak frequency $f_{\text{bub}} \sim \beta/v_w$ and efficiency $\kappa_{\text{bub}}$:
+\begin{equation}
+    \Omega_{\text{bub}}(k) \approx \left( \frac{H_*}{\beta} \right)^2 \left( \frac{\kappa_{\text{bub}} \alpha}{1 + \alpha} \right)^2 \left( \frac{v_w^3}{0.42 + v_w^2} \right) \frac{3.8 (k/k_{\text{bub}})^{2.8}}{1 + 2.8 (k/k_{\text{bub}})^{3.8}}
+\end{equation}
+
+\subsubsection{Sound Wave Contribution (Sound Shell Model)}
+The sound wave contribution typically dominates in thermal transitions. Following Hindmarsh et al. (2015, 2019), the spectrum is:
+\begin{equation}
+    \Omega_{\text{sw}}(k) \approx 3 (H_* R_*) \left( \frac{\kappa_{\text{sw}} \alpha}{1 + \alpha} \right)^2 \tilde{\Omega}_{\text{sw}}(k) \Upsilon(t)
+\end{equation}
+where $R_* \approx (8\pi)^{1/3} v_w / \beta$ is the mean bubble separation, $\tilde{\Omega}_{\text{sw}}(k)$ is the spectral shape function, and $\Upsilon(t)$ is the suppression factor due to the finite lifetime of the acoustic phase:
+\begin{equation}
+    \Upsilon \approx \min(1, H_* \tau_{\text{sw}}), \quad \tau_{\text{sw}} \approx \frac{R_*}{U_f}
+\end{equation}
+The spectral shape $\tilde{\Omega}_{\text{sw}}(k)$ follows a double-broken power law:
+\begin{equation}
+    \tilde{\Omega}_{\text{sw}}(k) = \frac{\Omega_0}{(k/k_p)^{-3} + (k/k_p) \dots} \quad \text{(approximate)}
+\end{equation}
+A more precise fitting formula from Hindmarsh (2019) is used in numerical implementations:
+\begin{equation}
+    \tilde{\Omega}_{\text{sw}}(k) \approx (k/k_p)^3 \left( \frac{7}{4 + 3 (k/k_p)^2} \right)^{7/2}
+\end{equation}
+
+\subsubsection{Turbulence Contribution}
+The turbulence contribution at late times (after $t > \tau_{\text{sw}}$) is modeled as:
+\begin{equation}
+    \Omega_{\text{turb}}(k) \approx 3 (H_* R_*) \left( \frac{\kappa_{\text{turb}} \alpha}{1 + \alpha} \right)^{3/2} \frac{(k/k_{\text{turb}})^3}{[1 + (k/k_{\text{turb}})]^{11/3} (1 + 8\pi k / H_*)}
+\end{equation}
+where the $k^{-11/3}$ factor corresponds to the Kolmogorov spectrum.
+
+\subsection{Unified Formula}
+
+The unified formula for the GW spectral density is:
+\begin{equation}
+    \Omega_{\text{GW}}(k) = \sum_{i \in \{\text{bub, sw, turb}\}} \mathcal{A}_i(v_w, \alpha, \beta/H_*) \mathcal{S}_i(k/k_i) \mathcal{T}_i(H_* \tau_i)
+\end{equation}
+where $\mathcal{A}_i$ are the peak amplitudes, $\mathcal{S}_i$ are the spectral shape functions, and $\mathcal{T}_i$ are the timescale-dependent suppression factors.
+
+\subsubsection{IR Causality and UV Scaling}
+As $k \to 0$, causality requires that the power spectrum of the energy density $P_{\rho}(k) \sim k^0$, which implies $d\rho/dk \sim k^2$, or $d\rho/d\ln k \sim k^3$. Thus, $\Omega_{\text{GW}}(k) \sim k^3$ in the IR limit for all components. In the UV, the spectra scale as $k^{-p}$ with $p$ depending on the mechanism (e.g., $p=1$ for bubbles in the envelope approximation, $p=3$ or $4$ for sound waves, $p=11/3$ for turbulence).
+
 \end{document}
