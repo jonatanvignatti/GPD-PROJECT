@@ -67,6 +67,10 @@ This project aims to construct improved gravitational wave (GW) spectra for elec
 - **Key Anchors:** Wall velocity $v_w$ models, Sound shell approximations
 - **Dependencies:** Phase 2
 
+**Plans:** 2 plans
+- [ ] 03-01-PLAN.md -- Parameter Sweeps and Peak Extraction
+- [ ] 03-02-PLAN.md -- Sensitivity Analysis and Displacement Mapping
+
 **Success Criteria:**
 1. Generation of displacement maps in the $(f, \Omega_{GW})$ plane showing how the signal peak moves as $v_w$ varies from $0.1$ to $1.0$.
 2. Comparison of "thin-shell" vs "thick-shell" sound shell models reveals systematic shifts in peak frequency and spectral slope.
