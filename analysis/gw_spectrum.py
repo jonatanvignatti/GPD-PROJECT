@@ -72,3 +72,20 @@ def omega_gw_total(k, params):
         res += omega_turb(k, k_turb, alpha, h_r_star, kappa_turb, h_star)
         
     return res
+
+def redshift_to_observer(k_source, omega_source, t_star, g_star):
+    """
+    Transform source-frame spectrum (k_source/H_*, Omega_GW^*) to 
+    observer-frame (f, Omega_GW h^2).
+    
+    Ref: 02-RESEARCH.md
+    """
+    # f = 1.65e-5 Hz * (f_*/H_*) * (T_*/100 GeV) * (g_*/100)^(1/6)
+    # f_*/H_* = k_source / (2 * pi)
+    f_source_h = k_source / (2.0 * np.pi)
+    f_obs = 1.65e-5 * f_source_h * (t_star / 100.0) * (g_star / 100.0)**(1.0/6.0)
+    
+    # Omega_GW h^2 = 1.67e-5 * Omega_GW^* * (g_*/100)^(-1/3)
+    omega_h2 = 1.67e-5 * omega_source * (g_star / 100.0)**(-1.0/3.0)
+    
+    return f_obs, omega_h2
