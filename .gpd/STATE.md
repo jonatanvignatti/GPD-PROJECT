@@ -9,15 +9,15 @@ See: .gpd/PROJECT.md
 
 ## Current Position
 
-**Current Phase:** —
-**Current Phase Name:** —
-**Total Phases:** —
-**Current Plan:** —
-**Total Plans in Phase:** —
-**Status:** —
-**Last Activity:** —
+**Current Phase:** 01
+**Current Phase Name:** Unified Formalism for GW Sources
+**Total Phases:** 3
+**Current Plan:** 01-02
+**Total Plans in Phase:** 2
+**Status:** Phase Complete
+**Last Activity:** 2026-03-17
 
-**Progress:** [░░░░░░░░░░] 0%
+**Progress:** [████░░░░░░] 40%
 
 ## Active Calculations
 
@@ -50,7 +50,13 @@ None yet.
 
 **Convention Lock:**
 
-No conventions locked yet.
+- Metric signature: mostly-plus
+- Fourier convention: Physics: 1/(2\pi)^3 on d^3k, e^{i\mathbf{k}\cdot\mathbf{x}} inverse
+- Natural units: hbar = c = k_B = 1
+- Gauge choice: Transverse-traceless (TT)
+- Coordinate system: Comoving x, physical time t
+- Index positioning: p^0 = omega (energy), Greek spacetime, Latin spatial
+- Levi-Civita sign: epsilon_{0123} = +1
 
 ### Propagated Uncertainties
 

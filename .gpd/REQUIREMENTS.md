@@ -44,12 +44,12 @@
 
 ## Traceability
 
-| Requirement | Phase                | Status  |
-| ----------- | -------------------- | ------- |
-| ANAL-01     | Phase 1: Formalism   | Pending |
-| ANAL-02     | Phase 1: Formalism   | Pending |
-| NUMR-01     | Phase 2: Numerical   | Pending |
-| NUMR-02     | Phase 2: Numerical   | Pending |
+| Requirement | Phase                                        | Status  |
+| ----------- | -------------------------------------------- | ------- |
+| ANAL-01     | Phase 1: Unified Formalism for GW Sources    | Pending |
+| ANAL-02     | Phase 1: Unified Formalism for GW Sources    | Pending |
+| NUMR-01     | Phase 2: Numerical Implementation            | Pending |
+| NUMR-02     | Phase 3: Modeling Sensitivity                | Pending |
 
 **Coverage:**
 
