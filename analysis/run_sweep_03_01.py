@@ -17,39 +17,57 @@ models = ['SSM', 'Bub', 'Mixed']
 # Frequency grid (observer frame)
 f_obs_grid = np.logspace(-9, 3, 12 * 100)  # 100 points per decade
 
+def kappa_sw_benchmark(alpha, v_w):
+    """
+    Simplified efficiency factor for sound waves.
+    Ref: Espinosa et al. (2010).
+    """
+    if v_w > 0.9: # Detonations
+        return alpha / (0.73 + 0.083 * np.sqrt(alpha) + alpha)
+    else: # Deflagrations
+        return alpha**0.5 / (0.2 + alpha**0.5)
+
 def run_sweep():
     results = []
     raw_spectra = {}
 
     for v_w in v_w_grid:
         for alpha in alpha_grid:
+            # Physical scaling for R_*
+            # H_* R_* = v_w / (beta/H_*)
+            hr_star = v_w / BETA_H
+            
+            # Peak wavenumber k_p / H_* ~ 1 / (H_* R_*)
+            k_p = 2.0 / hr_star # Characteristic scale for sound waves
+            
             for model in models:
                 # Setup parameters
                 params = {
                     'alpha': alpha,
                     'v_w': v_w,
                     'beta_h': BETA_H,
-                    'h_r_star': HR_STAR,
-                    'tau_sw_h': 1.0,  # Assume long-lived sound waves for sensitivity baseline
+                    'h_r_star': hr_star,
+                    'tau_sw_h': 1.0,
                     'h_star': 1.0,
-                    'k_bub': 100.0,   # k_p / H_* roughly beta/v_w
-                    'k_sw': 100.0,
-                    'k_turb': 100.0
+                    'k_bub': k_p,
+                    'k_sw': k_p,
+                    'k_turb': k_p
                 }
                 
                 # Model efficiency factors
                 if model == 'SSM':
-                    params['kappa_sw'] = 0.5 # Representative
+                    params['kappa_sw'] = kappa_sw_benchmark(alpha, v_w)
                     params['kappa_bub'] = 0.0
                     params['kappa_turb'] = 0.0
                 elif model == 'Bub':
                     params['kappa_sw'] = 0.0
-                    params['kappa_bub'] = 0.5
+                    params['kappa_bub'] = kappa_sw_benchmark(alpha, v_w) # Use same order for bubbles
                     params['kappa_turb'] = 0.0
                 elif model == 'Mixed':
-                    params['kappa_sw'] = 0.8 * 0.5
-                    params['kappa_bub'] = 0.1 * 0.5
-                    params['kappa_turb'] = 0.1 * 0.5
+                    kappa = kappa_sw_benchmark(alpha, v_w)
+                    params['kappa_sw'] = 0.8 * kappa
+                    params['kappa_bub'] = 0.1 * kappa
+                    params['kappa_turb'] = 0.1 * kappa
 
                 # Compute source-frame spectrum
                 # We need a k-grid that maps to our f_obs_grid

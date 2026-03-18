@@ -61,7 +61,7 @@ This project aims to construct improved gravitational wave (GW) spectra for elec
 
 **Goal:** Quantify the displacement of the GW signal in the $(f, \Omega_{GW})$ plane resulting from different physical modeling assumptions.
 
-- **Status:** Pending
+- **Status:** Complete (2026-03-18)
 - **Primary Objectives:** NUMR-02
 - **Contract Coverage:** Comparison plots showing signal movement (deliv-gw-spectra-plots), Quantification of modeling impacts
 - **Key Anchors:** Wall velocity $v_w$ models, Sound shell approximations
