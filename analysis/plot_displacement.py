@@ -1,7 +1,8 @@
-import numpy as np
-import matplotlib.pyplot as plt
 import csv
 import json
+
+import matplotlib.pyplot as plt
+import numpy as np
 
 # ASSERT_CONVENTION: natural_units=natural, metric_signature=mostly-plus, fourier_convention=physics, coordinate_system=log-log-plane
 
